@@ -34,10 +34,9 @@ RewriteRule ^(.*) http://www.newdomain.com/%1 [R=302,NC]
 ```
 #### Redirect bare domain to www. domain
 ```
-#Options +FollowSymLinks (depends on the server configuration)
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^domain.com [NC]
-RewriteRule ^(.*)$ http://www.domain.com/$1 [L,R=301]
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 ```
 #### Redirect bare domain to www. domain with subdirectory
 ```
